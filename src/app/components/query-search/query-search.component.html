@@ -1,0 +1,39 @@
+<p-table [value]="trees" [tableStyle]="{ 'min-width': '100rem' }" 
+[paginator]="true"
+[rows]="10"
+[showCurrentPageReport]="true"
+[tableStyle]="{ 'min-width': '50rem' }"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+[rowsPerPageOptions]="[5, 10, 20]"
+>
+  <ng-template pTemplate="header">
+      <tr>
+          <th>FID</th>
+          <th>Tree ID</th>
+          <th>Common Name</th>
+          <th>Scientific Name</th>
+          <th>Height (ft)</th>
+          <th>DBH1 (inches)</th>
+          <th>Crown Height (ft)</th>
+          <th>Condition</th>
+          <th>CO Removed (kg)</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-tree>
+      <tr>
+          <td>{{ tree.FID }}</td>
+          <td>{{ tree.Tree_ID }}</td>
+          <td>{{ tree.Cmn_Name }}</td>
+          <td>{{ tree.Sci_Name }}</td>
+          <td>{{ tree.Height }}</td>
+          <td>{{ tree.DBH1 }}</td>
+          <td>{{ tree.Crown_Height }}</td>
+          <td>{{ tree.Condition }}</td>
+          <td>{{ tree.CO_Rmvd }}</td>
+          <td>{{ tree.Latitude | number:'1.2-2' }}</td>
+          <td>{{ tree.Longitude | number:'1.2-2' }}</td>
+      </tr>
+  </ng-template>
+</p-table>
