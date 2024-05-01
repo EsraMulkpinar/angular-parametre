@@ -1,14 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QueryService } from '../../services/query.service';
 import { Table } from 'primeng/table';
+import { TableColumn } from '../../models/table-col.model';
+import { Attributes, Feature } from '../../models/all-data-response.model';
 
-interface Tree {
-  Tree_ID: number;
-  Cmn_Name: string;
-  Sci_Name: string;
-  Height: number;
-  Condition: string;
-}
 
 @Component({
   selector: 'app-query-search',
@@ -16,9 +11,9 @@ interface Tree {
   styleUrls: ['./query-search.component.css']
 })
 export class QuerySearchComponent implements OnInit {
-  trees: Tree[] = [];
-  cols: any[];
-
+  responses: Attributes[] = [];
+  cols: TableColumn[];
+  loading: boolean = false;
   @ViewChild('table') table: Table | undefined;
 
   constructor(private queryService: QueryService) {
@@ -36,18 +31,24 @@ export class QuerySearchComponent implements OnInit {
   }
 
   loadInitialData() {
+    this.loading = true;
+
     const queryParams = {
       outFields: '*',
       f: 'json',
       where: '1=1'  // İlk etapta tüm veriyi çekmek için
     };
 
-    this.queryService.getFilteredTrees(queryParams).subscribe(
+    this.queryService.getFilteredResponses(queryParams).subscribe(
       data => {
-        this.trees = data.features.map((feature: { attributes: Tree; }) => feature.attributes as Tree);
+        this.responses = data.features.map((feature: Feature) => feature.attributes );
+        this.loading = false;
+
       },
       error => {
         console.error('Error fetching data: ', error);
+        this.loading = false;
+
       }
     );
   }
@@ -57,6 +58,6 @@ export class QuerySearchComponent implements OnInit {
     this.table?.filterGlobal(value, filterMatchMode);
   }
   clearFilters() {
-    this.table?.clear(); // Tablodaki tüm filtreleri temizler.
+    this.table?.clear(); 
   }
 }

@@ -1,44 +1,43 @@
 <div class="card">
   <p>
-  <p-button type="button" class="clear-button" label="Clear All Filters" icon="pi pi-filter-slash" (click)="clearFilters()"></p-button>
-
+  <p-button type="button" label="Clear All Filters" icon="pi pi-filter-slash" (click)="clearFilters()"></p-button>
   </p>
-  <p-table #table [value]="trees" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '70rem'}"
+  <p-table #table [value]="responses" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '70rem'}"
     [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [globalFilterFields]="['Tree_ID', 'Cmn_Name', 'Sci_Name', 'Height', 'Condition']">
+    [globalFilterFields]="['Tree_ID', 'Cmn_Name', 'Sci_Name', 'Height', 'Condition']" [loading]="loading">
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="Tree_ID">
+        <th >
           <div class="sorter-header">Tree ID
-            <p-sortIcon field="Tree_ID"></p-sortIcon>
+            <p-sortIcon pSortableColumn="Tree_ID" field="Tree_ID"></p-sortIcon>
           </div>
           <p-columnFilter type="text" field="Tree_ID" matchMode="equals"></p-columnFilter>
         </th>
-        <th pSortableColumn="Cmn_Name">
+        <th >
           <div class="sorter-header">
             Common Name
-            <p-sortIcon field="Cmn_Name"></p-sortIcon>
+            <p-sortIcon pSortableColumn="Cmn_Name" field="Cmn_Name"></p-sortIcon>
           </div>
           <p-columnFilter type="text" field="Cmn_Name" matchMode="contains"></p-columnFilter>
         </th>
-        <th pSortableColumn="Sci_Name">
+        <th >
           <div class="sorter-header">
             Scientific Name
-            <p-sortIcon field="Sci_Name"></p-sortIcon>
+            <p-sortIcon pSortableColumn="Sci_Name" field="Sci_Name"></p-sortIcon>
           </div>
           <p-columnFilter type="text" field="Sci_Name" matchMode="contains"></p-columnFilter>
         </th>
-        <th pSortableColumn="Height">
+        <th >
           <div class="sorter-header">
             Height
-            <p-sortIcon field="Height"></p-sortIcon>
+            <p-sortIcon pSortableColumn="Height" field="Height"></p-sortIcon>
           </div>
           <p-columnFilter type="text" field="Height" matchMode="equals"></p-columnFilter>
         </th>
-        <th pSortableColumn="Condition">
+        <th >
           <div class="sorter-header">
             Condition
-            <p-sortIcon field="Condition"></p-sortIcon>
+            <p-sortIcon pSortableColumn="Condition" field="Condition"></p-sortIcon>
           </div>
           <p-columnFilter type="text" field="Condition" matchMode="contains"></p-columnFilter>
         </th>
