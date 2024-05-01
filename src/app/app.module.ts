@@ -11,6 +11,7 @@ import { TreeTableModule } from 'primeng/treetable';
 import { TableModule } from 'primeng/table';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { InputTextModule } from 'primeng/inputtext';
     TreeTableModule,
     TableModule,
     SelectButtonModule,
-    InputTextModule
+    InputTextModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

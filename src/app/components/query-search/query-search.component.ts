@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { QueryService } from '../../services/query.service';
+import { Table } from 'primeng/table';
 
 interface Tree {
   Tree_ID: number;
-  Collected: string;
-  Crew: string;
-  Status: string;
-  Spp_Code: string;
+  Cmn_Name: string;
+  Sci_Name: string;
   Height: number;
-  Crown_Height: number;
-  Leaf_Area: number;
-  Leaf_Bmass: number;
-  Longitude: number;
-  Latitude: number;
+  Condition: string;
 }
 
 @Component({
@@ -22,25 +17,21 @@ interface Tree {
 })
 export class QuerySearchComponent implements OnInit {
   trees: Tree[] = [];
-  cols: any[] = [];
+  cols: any[];
 
-  constructor(private queryService: QueryService) {}
+  @ViewChild('table') table: Table | undefined;
+
+  constructor(private queryService: QueryService) {
+    this.cols = [
+      { field: 'Tree_ID', header: 'Tree ID', filterMatchMode: 'equals' },
+      { field: 'Cmn_Name', header: 'Common Name', filterMatchMode: 'contains' },
+      { field: 'Sci_Name', header: 'Scientific Name', filterMatchMode: 'contains' },
+      { field: 'Height', header: 'Height', filterMatchMode: 'equals' },
+      { field: 'Condition', header: 'Condition', filterMatchMode: 'contains' }
+    ];
+  }
 
   ngOnInit() {
-    this.cols = [
-      { field: 'Tree_ID', header: 'ID' },
-      { field: 'Collected', header: 'Collection Date' },
-      { field: 'Crew', header: 'Crew' },
-      { field: 'Status', header: 'Status' },
-      { field: 'Spp_Code', header: 'Species Code' },
-      { field: 'Height', header: 'Height (ft)' },
-      { field: 'Crown_Height', header: 'Crown Height (ft)' },
-      { field: 'Leaf_Area', header: 'Leaf Area' },
-      { field: 'Leaf_Bmass', header: 'Leaf Biomass' },
-      { field: 'Longitude', header: 'Longitude' },
-      { field: 'Latitude', header: 'Latitude' }
-    ];
-
     this.loadInitialData();
   }
 
@@ -48,7 +39,7 @@ export class QuerySearchComponent implements OnInit {
     const queryParams = {
       outFields: '*',
       f: 'json',
-      where: '1=1'  // Always true condition
+      where: '1=1'  // İlk etapta tüm veriyi çekmek için
     };
 
     this.queryService.getFilteredTrees(queryParams).subscribe(
@@ -59,5 +50,13 @@ export class QuerySearchComponent implements OnInit {
         console.error('Error fetching data: ', error);
       }
     );
+  }
+
+  applyFilterGlobal(event: Event, filterMatchMode: string) {
+    const value = (event.target as HTMLInputElement).value;
+    this.table?.filterGlobal(value, filterMatchMode);
+  }
+  clearFilters() {
+    this.table?.clear(); // Tablodaki tüm filtreleri temizler.
   }
 }

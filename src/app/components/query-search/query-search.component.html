@@ -1,39 +1,58 @@
-<p-table [value]="trees" [tableStyle]="{ 'min-width': '100rem' }" 
-[paginator]="true"
-[rows]="10"
-[showCurrentPageReport]="true"
-[tableStyle]="{ 'min-width': '50rem' }"
-currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-[rowsPerPageOptions]="[5, 10, 20]"
->
-  <ng-template pTemplate="header">
+<div class="card">
+  <p>
+  <p-button type="button" class="clear-button" label="Clear All Filters" icon="pi pi-filter-slash" (click)="clearFilters()"></p-button>
+
+  </p>
+  <p-table #table [value]="trees" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '70rem'}"
+    [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['Tree_ID', 'Cmn_Name', 'Sci_Name', 'Height', 'Condition']">
+    <ng-template pTemplate="header">
       <tr>
-          <th>FID</th>
-          <th>Tree ID</th>
-          <th>Common Name</th>
-          <th>Scientific Name</th>
-          <th>Height (ft)</th>
-          <th>DBH1 (inches)</th>
-          <th>Crown Height (ft)</th>
-          <th>Condition</th>
-          <th>CO Removed (kg)</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
+        <th pSortableColumn="Tree_ID">
+          <div class="sorter-header">Tree ID
+            <p-sortIcon field="Tree_ID"></p-sortIcon>
+          </div>
+          <p-columnFilter type="text" field="Tree_ID" matchMode="equals"></p-columnFilter>
+        </th>
+        <th pSortableColumn="Cmn_Name">
+          <div class="sorter-header">
+            Common Name
+            <p-sortIcon field="Cmn_Name"></p-sortIcon>
+          </div>
+          <p-columnFilter type="text" field="Cmn_Name" matchMode="contains"></p-columnFilter>
+        </th>
+        <th pSortableColumn="Sci_Name">
+          <div class="sorter-header">
+            Scientific Name
+            <p-sortIcon field="Sci_Name"></p-sortIcon>
+          </div>
+          <p-columnFilter type="text" field="Sci_Name" matchMode="contains"></p-columnFilter>
+        </th>
+        <th pSortableColumn="Height">
+          <div class="sorter-header">
+            Height
+            <p-sortIcon field="Height"></p-sortIcon>
+          </div>
+          <p-columnFilter type="text" field="Height" matchMode="equals"></p-columnFilter>
+        </th>
+        <th pSortableColumn="Condition">
+          <div class="sorter-header">
+            Condition
+            <p-sortIcon field="Condition"></p-sortIcon>
+          </div>
+          <p-columnFilter type="text" field="Condition" matchMode="contains"></p-columnFilter>
+        </th>
       </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-tree>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-tree>
       <tr>
-          <td>{{ tree.FID }}</td>
-          <td>{{ tree.Tree_ID }}</td>
-          <td>{{ tree.Cmn_Name }}</td>
-          <td>{{ tree.Sci_Name }}</td>
-          <td>{{ tree.Height }}</td>
-          <td>{{ tree.DBH1 }}</td>
-          <td>{{ tree.Crown_Height }}</td>
-          <td>{{ tree.Condition }}</td>
-          <td>{{ tree.CO_Rmvd }}</td>
-          <td>{{ tree.Latitude | number:'1.2-2' }}</td>
-          <td>{{ tree.Longitude | number:'1.2-2' }}</td>
+        <td>{{ tree.Tree_ID }}</td>
+        <td>{{ tree.Cmn_Name }}</td>
+        <td>{{ tree.Sci_Name }}</td>
+        <td>{{ tree.Height }}</td>
+        <td>{{ tree.Condition }}</td>
       </tr>
-  </ng-template>
-</p-table>
+    </ng-template>
+  </p-table>
+</div>
