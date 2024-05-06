@@ -12,10 +12,16 @@ import { TableModule } from 'primeng/table';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
-    QuerySearchComponent
+    QuerySearchComponent,
+    RegisterComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
