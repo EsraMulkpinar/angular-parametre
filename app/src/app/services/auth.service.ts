@@ -21,7 +21,6 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, payload).toPromise();
   }
   
-
   async logout(): Promise<Observable<any>> {
     return this.http.post(`${this.apiUrl}/logout`, httpOptions);
   }

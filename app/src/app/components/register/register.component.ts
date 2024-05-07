@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent {
   email!: string;
   password!: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router: Router) { }
 
   register(): void {
     const payload = {
@@ -22,12 +23,10 @@ export class RegisterComponent {
     this.authService.register(payload)
       .subscribe(
         response => {
-          console.log("kayıt tamam usta");
-          
-          // Kayıt başarılı ise yapılacak işlemler
+          this.router.navigate(['/login']);
         },
         error => {
-          // Hata durumunda yapılacak işlemler
+          console.error(error)
         }
       );
   }

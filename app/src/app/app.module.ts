@@ -15,13 +15,16 @@ import { ButtonModule } from 'primeng/button';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { UserListComponent } from './components/users/users.component';
 @NgModule({
   declarations: [
     AppComponent,
     QuerySearchComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    UserListComponent
+    ,
   ],
   imports: [
     BrowserModule,

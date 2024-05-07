@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LogoutComponent {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router:Router) { }
 
   async logout(): Promise<void> {
     try {
@@ -18,9 +19,10 @@ export class LogoutComponent {
         
         await this.authService.logout(); 
         localStorage.removeItem('accessToken'); 
+        this.router.navigate(['/login']);
       }
     } catch (error) {
-      // Hata durumunda yapılacak işlemler
+      console.error(error)
     }
   }
 }
