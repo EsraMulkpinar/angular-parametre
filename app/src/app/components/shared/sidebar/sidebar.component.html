@@ -1,0 +1,27 @@
+<p-sidebar ngIf="isLoggedUser" class="sidebar" #sidebarRef [(visible)]="sidebarVisible">
+    <ng-template pTemplate="headless">
+        <div class="flex flex-column h-full sidebar">
+            <div class="sidebar-header flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
+                <span class="inline-flex align-items-center gap-2">
+                    <span class="font-semibold text-2xl text-primary">MENU BAR</span>
+                </span>
+                <span>
+                    <p-button type="button" (click)="closeCallback()" icon="pi pi-times" rounded="true" outlined="true"
+                        class="close-button"></p-button>
+                </span>
+            </div>
+
+            <div class="sidebar">
+                <ul  class="list-none  overflow-hidden">
+                    <li *ngFor="let route of routes">
+                        <a class="router-button" [routerLink]="[route.path]">
+                            <i class="p-ripple" [ngClass]="'pi ' + route.icon + ' mr-2'"></i>
+                            <span class="font-medium">{{ route.label }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ng-template>
+</p-sidebar>
+<p-button (click)="toggleSidebar()" icon="pi pi-arrow-right"></p-button>

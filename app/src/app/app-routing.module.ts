@@ -9,7 +9,7 @@ import { UserListComponent } from './components/users/users.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'query', component: QuerySearchComponent},
+  { path: 'query', component: QuerySearchComponent,},
   { path: 'users', component: UserListComponent},
   { path: '', redirectTo: '/register', pathMatch: 'full' },
 ];

@@ -1,4 +1,6 @@
-<p-table [value]="users">
+<div class="card">
+  <app-logout></app-logout>
+  <p-table [value]="users">
     <ng-template pTemplate="header">
       <tr>
         <th>Username</th>
@@ -13,10 +15,10 @@
         <td>{{ user.email }}</td>
         <td>{{ user.role.name }}</td>
         <td>
-          <!-- <button pButton type="button" (click)="editUser(user)">Edit</button> -->
-          <button pButton type="button" (click)="deleteUser(user.id)">Delete</button>
+          <button pButton type="button" (click)="updateUser(user)"><i class="pi pi-pen-to-square"></i></button>
+          <button pButton type="button" (click)="deleteUser(user.id)"><i class="pi pi-trash "></i></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
-  
+</div>

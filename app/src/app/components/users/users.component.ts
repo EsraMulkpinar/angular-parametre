@@ -28,14 +28,17 @@ export class UserListComponent implements OnInit {
       this.loadUsers();
     });
   }
-  // updateUser(): void {
+  updateUser(id:number): void {
     
-  //   const foundUser= 
-  //   if (this.selectedUser) {
-  //     this.userService.updateUser(this.selectedUser.id, this.selectedUser).subscribe(() => {
-  //       this.loadUsers();
-  //       this.selectedUser = null;
-  //     });
-  //   }
-  // }
+    const foundUser= this.userService.findOneUser(id).subscribe(() => {
+      console.log(foundUser);
+      
+    })
+    // if (this.selectedUser) {
+    //   this.userService.updateUser(this.selectedUser.id, this.selectedUser).subscribe(() => {
+    //     this.loadUsers();
+    //     this.selectedUser = null;
+    //   });
+    // }
+  }
 }
