@@ -13,6 +13,14 @@ export class QueryService {
 
   constructor(private http: HttpClient) {}
 
+  getFeatureData(): Observable<any> {
+    const params = {
+      where: "1=1",
+      outFields: "*",
+      f: "json"
+    };
+    return this.http.get(this.baseUrl, { params });
+  }
   getFilteredResponses(filters: FilterParams): Observable<AllDataResponse> {
     const params = new HttpParams({ fromObject: filters });
     return this.http.get<AllDataResponse>(this.baseUrl, { params });
