@@ -15,10 +15,34 @@
         <td>{{ user.email }}</td>
         <td>{{ user.role.name }}</td>
         <td>
-          <button pButton type="button" (click)="updateUser(user)"><i class="pi pi-pen-to-square"></i></button>
-          <button pButton type="button" (click)="deleteUser(user.id)"><i class="pi pi-trash "></i></button>
+          <button pButton type="button" icon="pi pi-pen-to-square" (click)="showEditUserDialog(user)"></button>
+          <button pButton type="button" icon="pi pi-trash" (click)="deleteUser(user.id)"></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
+  
+  <p-dialog header="Kullanıcı Güncelle" [(visible)]="displayEditDialog" [modal]="true" [style]="{width: '50vw'}">
+    <form #userForm="ngForm">
+        <div class="p-fluid">
+            <div class="p-field">
+                <label for="username">Kullanıcı Adı</label>
+                <input type="text" id="username" [(ngModel)]="selectedUser.username" name="username" required pInputText>
+            </div>
+            <div class="p-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" [(ngModel)]="selectedUser.email" name="email" required pInputText>
+            </div>
+            <div class="p-field">
+                <label for="role">Rol</label>
+                <p-dropdown [options]="roles" [(ngModel)]="selectedUser.role" optionLabel="name" name="role"></p-dropdown>
+            </div>
+        </div>
+        <p-footer>
+            <p-button type="button" pButton label="İptal" icon="pi pi-times" (click)="displayEditDialog=false"></p-button>
+            <p-button type="button" pButton label="Kaydet" icon="pi pi-check" (click)="updateUser(selectedUser.id)" [disabled]="!userForm.valid"></p-button>
+        </p-footer>
+    </form>
+</p-dialog>
+
 </div>

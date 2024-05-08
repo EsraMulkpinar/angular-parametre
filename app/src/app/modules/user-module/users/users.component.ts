@@ -9,8 +9,14 @@ import { User } from '../models/users.model';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
-
+  selectedUser: User = {} as User;
+  displayEditDialog: boolean = false;
+  roles = [
+    { id: 1, name: 'admin' },
+    { id: 2, name: 'user' },
+  ];
   constructor(private userService: UserService) {}
+
   ngOnInit(): void {
     this.loadUsers();
   }
@@ -25,20 +31,23 @@ export class UserListComponent implements OnInit {
 
   deleteUser(id: number): void {
     this.userService.deleteUser(id).subscribe(() => {
-      this.loadUsers();
+      this.loadUsers(); // Refresh the list after deletion
     });
   }
-  updateUser(id:number): void {
+
+  showEditUserDialog(user: User): void {
+    this.selectedUser = { ...user };
+    this.displayEditDialog = true;
+    console.log(this.selectedUser);
     
-    const foundUser= this.userService.findOneUser(id).subscribe(() => {
-      console.log(foundUser);
+  }
+
+  updateUser(id: number): void {
+    this.userService.updateUser(id, this.selectedUser).subscribe(() => {
+      this.loadUsers(); 
+      console.log(this.selectedUser);
       
-    })
-    // if (this.selectedUser) {
-    //   this.userService.updateUser(this.selectedUser.id, this.selectedUser).subscribe(() => {
-    //     this.loadUsers();
-    //     this.selectedUser = null;
-    //   });
-    // }
+      this.displayEditDialog = false;
+    });
   }
 }

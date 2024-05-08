@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { QuerySearchComponent } from './pages/query-search/query-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +26,10 @@ import { CCardComponent } from './modules/card-module/ccard/ccard.component';
 import { ACardComponent } from './modules/card-module/acard/acard.component';
 import { CardComponent } from './pages/card/card.component';
 import { MapComponent } from './modules/map-module/map/map.component';
-
+import { AuthInterceptor } from './common/interceptor/auth.interceptor';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { TasksComponent } from './modules/task-module/task/task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,8 @@ import { MapComponent } from './modules/map-module/map/map.component';
     BCardComponent,
     CCardComponent,
     CardComponent,
-    MapComponent
+    MapComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +61,13 @@ import { MapComponent } from './modules/map-module/map/map.component';
     ButtonModule,
     SidebarModule,
     RippleModule,
-    CardModule
+    CardModule,
+    DialogModule,
+    DropdownModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

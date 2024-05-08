@@ -5,9 +5,10 @@ import { RegisterComponent } from './modules/auth-module/register/register.compo
 import { QuerySearchComponent } from './pages/query-search/query-search.component';
 import { UserListComponent } from './modules/user-module/users/users.component';
 import { MainComponent } from './pages/main/main.component';
-import { DynamicCardPanelComponent } from './pages/dynamic-card-panel/dynamic-card-panel.component';
 import { CardComponent } from './pages/card/card.component';
 import { MapComponent } from './modules/map-module/map/map.component';
+import { AuthGuard } from './common/guards/auth-guard';
+import { TasksComponent } from './modules/task-module/task/task.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,8 +16,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'query', component: QuerySearchComponent,},
   { path: 'dynamic', component: CardComponent,},
-  { path: 'users', component: UserListComponent},
+  { path: 'users', component: UserListComponent,canActivate: [AuthGuard]},
   { path: 'map', component: MapComponent},
+  { path: 'task', component: TasksComponent},
   { path: '', redirectTo: '/register', pathMatch: 'full' },
 ];
 

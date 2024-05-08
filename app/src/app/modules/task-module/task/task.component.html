@@ -1,0 +1,34 @@
+<div>
+    <h2>Tasks</h2>
+    <button pButton type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showDialog = true" label="Create Task"></button>
+  
+    <p-table [value]="tasks">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-task>
+        <tr>
+          <td>{{ task.name }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success" (click)="editTask(task)" label="Edit"></button>
+            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="removeTask(task.id)" label="Delete"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+  <p-dialog header="Create New Task" [(visible)]="showDialog" [modal]="true" [closable]="true" [resizable]="false">
+    <form (ngSubmit)="addTask()"> 
+      <div class="p-field">
+        <label for="taskName">Task Name</label>
+        <input type="text" pInputText [(ngModel)]="taskName" name="taskName" required>
+      </div>
+      <button pButton type="submit" label="Save Task" icon="pi pi-check"></button>
+    </form>
+  </p-dialog>
+  
+  
