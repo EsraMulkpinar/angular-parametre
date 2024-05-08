@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'case-1'`, () => {
+  it(`should have as title 'angular-parametre'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('case-1');
+    expect(app.title).toEqual('angular-parametre');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, case-1');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-parametre');
   });
 });
