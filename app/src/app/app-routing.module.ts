@@ -4,7 +4,6 @@ import { LoginComponent } from './modules/auth-module/login/login.component';
 import { RegisterComponent } from './modules/auth-module/register/register.component';
 import { QuerySearchComponent } from './pages/query-search/query-search.component';
 import { UserListComponent } from './modules/user-module/users/users.component';
-import { MainComponent } from './pages/main/main.component';
 import { CardComponent } from './pages/card/card.component';
 import { MapComponent } from './modules/map-module/map/map.component';
 import { AuthGuard } from './common/guards/auth-guard';
@@ -12,7 +11,6 @@ import { TasksComponent } from './modules/task-module/task/task.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'query', component: QuerySearchComponent,},
   { path: 'dynamic', component: CardComponent,},

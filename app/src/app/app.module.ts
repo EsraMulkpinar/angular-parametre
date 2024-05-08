@@ -20,7 +20,6 @@ import { UserListComponent } from './modules/user-module/users/users.component';
 import { SidebarComponent } from './common/components/sidebar/sidebar.component';
 import { RippleModule } from 'primeng/ripple';
 import { DynamicCardPanelComponent } from './pages/dynamic-card-panel/dynamic-card-panel.component';
-import { MainComponent } from './pages/main/main.component';
 import { BCardComponent } from './modules/card-module/bcard/bcard.component';
 import { CCardComponent } from './modules/card-module/ccard/ccard.component';
 import { ACardComponent } from './modules/card-module/acard/acard.component';
@@ -40,7 +39,6 @@ import { TasksComponent } from './modules/task-module/task/task.component';
     UserListComponent,
     SidebarComponent,
     DynamicCardPanelComponent,
-    MainComponent,
     ACardComponent,
     BCardComponent,
     CCardComponent,

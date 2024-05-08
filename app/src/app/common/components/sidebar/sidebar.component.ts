@@ -15,9 +15,9 @@ export class SidebarComponent {
     { path: '/register', label: 'Register', icon: 'pi-user-plus' },
     { path: '/query', label: 'Query', icon: 'pi-search' },
     { path: '/users', label: 'Users', icon: 'pi-users' },
-    { path: '/dynamic', label: 'Dynamic Card', icon: 'pi-users' },
-    { path: '/map', label: 'Map ', icon: 'pi-users' },
-    { path: '/task', label: 'Tasks', icon: 'pi-users' },
+    { path: '/dynamic', label: 'Dynamic Card', icon: 'pi-id-card' },
+    { path: '/map', label: 'Map ', icon: 'pi-map-marker' },
+    { path: '/task', label: 'Tasks', icon: 'pi-list-check' },
   ];
 
   constructor(private router: Router) {}

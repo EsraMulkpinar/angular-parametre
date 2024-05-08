@@ -18,7 +18,8 @@ export class RegisterComponent {
     const payload = {
       username: this.username,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role:"user"
     };
     this.authService.register(payload)
       .subscribe(
