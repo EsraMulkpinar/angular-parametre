@@ -7,6 +7,7 @@ import { UserListComponent } from './modules/user-module/users/users.component';
 import { MainComponent } from './pages/main/main.component';
 import { DynamicCardPanelComponent } from './pages/dynamic-card-panel/dynamic-card-panel.component';
 import { CardComponent } from './pages/card/card.component';
+import { MapComponent } from './modules/map-module/map/map.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'query', component: QuerySearchComponent,},
   { path: 'dynamic', component: CardComponent,},
   { path: 'users', component: UserListComponent},
+  { path: 'map', component: MapComponent},
   { path: '', redirectTo: '/register', pathMatch: 'full' },
 ];
 
