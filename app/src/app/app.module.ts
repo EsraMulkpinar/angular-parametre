@@ -3,21 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { QuerySearchComponent } from './components/query-search/query-search.component';
+import { QuerySearchComponent } from './pages/query-search/query-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TreeTableModule } from 'primeng/treetable';
 import { TableModule } from 'primeng/table';
 import { SidebarModule} from "primeng/sidebar";
+import { CardModule } from 'primeng/card';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
-import { UserListComponent } from './components/users/users.component';
-import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { RegisterComponent } from './modules/auth-module/register/register.component';
+import { LoginComponent } from './modules/auth-module/login/login.component';
+import { LogoutComponent } from './modules/auth-module/logout/logout.component';
+import { UserListComponent } from './modules/user-module/users/users.component';
+import { SidebarComponent } from './common/components/sidebar/sidebar.component';
 import { RippleModule } from 'primeng/ripple';
+import { DynamicCardPanelComponent } from './pages/dynamic-card-panel/dynamic-card-panel.component';
+import { MainComponent } from './pages/main/main.component';
+import { BCardComponent } from './modules/card-module/bcard/bcard.component';
+import { CCardComponent } from './modules/card-module/ccard/ccard.component';
+import { ACardComponent } from './modules/card-module/acard/acard.component';
+import { CardComponent } from './pages/card/card.component';
+import { MapComponent } from './modules/map/map/map.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +35,14 @@ import { RippleModule } from 'primeng/ripple';
     LoginComponent,
     LogoutComponent,
     UserListComponent,
-    SidebarComponent
+    SidebarComponent,
+    DynamicCardPanelComponent,
+    MainComponent,
+    ACardComponent,
+    BCardComponent,
+    CCardComponent,
+    CardComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +56,8 @@ import { RippleModule } from 'primeng/ripple';
     InputTextModule,
     ButtonModule,
     SidebarModule,
-    RippleModule
+    RippleModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

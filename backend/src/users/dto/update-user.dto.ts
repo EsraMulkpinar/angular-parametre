@@ -1,4 +1,5 @@
-import { IsString, IsEmail, IsOptional, ValidateIf } from 'class-validator';
+import { IsEmail, IsOptional, IsString } from 'class-validator';
+import { Task } from 'src/tasks/entity/task.entitiy';
 
 export class UpdateUserDto {
   @IsOptional()
@@ -14,10 +15,8 @@ export class UpdateUserDto {
   email?: string;
 
   @IsOptional()
-  role?: number;
+  role?: string;
 
   @IsOptional()
-  task?: number;
-
-  
+  tasks?: Task[];
 }

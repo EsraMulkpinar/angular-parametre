@@ -1,0 +1,11 @@
+<hr/>
+<div class="container">
+  <p-card header="A Card" *ngFor="let item of data">
+    <div class="card">
+      <p>{{ item.content }}</p>
+      <p-button (click)="removeData(item.id)">Remove</p-button>
+    </div>
+  </p-card>
+
+</div>
+<p-button class="addButton" (click)="addData()">Add A Card Data</p-button>

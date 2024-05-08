@@ -1,0 +1,21 @@
+<hr/>
+
+
+<div class="container">
+  <p-card *ngFor="let item of data" header="B Card" subheader="Card Subheader" [style]="{ width: '360px' }">
+      <ng-template pTemplate="header">
+        <img alt="Card" src="https://picsum.photos/200/200" />
+      </ng-template>
+      <p>
+        {{ item.content }}
+    
+      </p>
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <p-button (click)="removeData(item.id)">Remove</p-button>
+    
+        </div>
+      </ng-template>
+  </p-card>
+</div>
+<p-button (click)="addData()"> B Card Add Data</p-button>

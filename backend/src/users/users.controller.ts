@@ -1,38 +1,37 @@
 import {
-  Controller,
-  Post,
   Body,
-  UsePipes,
-  ValidationPipe,
+  Controller,
   Delete,
+  Get,
   Param,
   Patch,
-  Get,
+  Post,
   UseGuards,
   UseInterceptors,
-  Req,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/common/decorators/roles.decorator';
+import { RolesGuard } from 'src/common/guards/roles.guard';
+import { GetUserInterceptor } from 'src/common/interceptors/GetUser.interceptor';
+import { RoleEnum } from 'src/roles/enum/role.enum';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Users } from './entity/users.entity';
-import { Roles } from 'src/common/decorators/roles.decorator';
-import { RoleEnum } from 'src/roles/enum/role.enum';
-import { GetUserInterceptor } from 'src/common/interceptors/GetUser.interceptor';
+import { UsersService } from './users.service';
 
 @Controller('users')
 @ApiTags('Users')
+@UseGuards(RolesGuard)
 @ApiBearerAuth()
-
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
   @UseInterceptors(GetUserInterceptor)
   @Roles(RoleEnum.Admin)
-  async getAllUsers(@Req() req): Promise<Users[]> {
-    console.log("req",req.user);
+  async getAllUsers(): Promise<Users[]> {
     return await this.usersService.getAllUsers();
   }
 

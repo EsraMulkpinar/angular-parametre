@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
-import { Users } from '../../users/entity/users.entity';
 import { IsString } from 'class-validator';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Users } from '../../users/entity/users.entity';
 
 @Entity()
 export class Task {
@@ -11,7 +11,6 @@ export class Task {
   @IsString()
   name: string;
 
-  @OneToMany(() => Users, user => user.task)
-  users: Users;
+  @ManyToOne(() => Users, (user) => user.tasks)
+  user: Users;
 }
-

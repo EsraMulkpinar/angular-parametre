@@ -1,0 +1,17 @@
+<hr/>
+
+<div class="container">
+    <p-card  *ngFor="let item of data" header="C Card" subheader="Card Subheader" [style]="{ width: '360px' }">
+        <p>
+            {{ item.content }}
+        </p>
+        <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1">
+                <button pButton (click)="removeData(item.id)">Remove</button>
+    
+                <p-button label="Save" class="w-full" styleClass="w-full" />
+            </div>
+        </ng-template>
+    </p-card>
+</div>
+<p-button  (click)="addData()">C Card Add Data</p-button>
