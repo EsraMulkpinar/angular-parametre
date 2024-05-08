@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'query', component: QuerySearchComponent,},
-  { path: 'card', component: CardComponent,},
+  { path: 'dynamic', component: CardComponent,},
   { path: 'users', component: UserListComponent},
   { path: '', redirectTo: '/register', pathMatch: 'full' },
 ];

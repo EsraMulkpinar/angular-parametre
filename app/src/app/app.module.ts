@@ -25,7 +25,7 @@ import { BCardComponent } from './modules/card-module/bcard/bcard.component';
 import { CCardComponent } from './modules/card-module/ccard/ccard.component';
 import { ACardComponent } from './modules/card-module/acard/acard.component';
 import { CardComponent } from './pages/card/card.component';
-import { MapComponent } from './modules/map/map/map.component';
+import { MapComponent } from './modules/map-module/map/map.component';
 
 @NgModule({
   declarations: [
